@@ -9,6 +9,7 @@ namespace Microsoft.Azure.WebJobs.Script.Rpc
         public const string DotNetLanguageWorkerName = "dotnet";
         public const string NodeLanguageWorkerName = "node";
         public const string JavaLanguageWorkerName = "java";
+        public const string PowershellLanguageWorkerName = "powershell";
         public const string WorkerConfigFileName = "worker.config.json";
         public const string DefaultWorkersDirectoryName = "workers";
 

@@ -37,6 +37,12 @@ namespace Microsoft.Azure.WebJobs.Script.Rpc
             context.Arguments.WorkerArguments.Aggregate(argumentsBuilder, MergeArguments);
             argumentsBuilder.AppendFormat(" --host {0} --port {1} --workerId {2} --requestId {3} --grpcMaxMessageLength {4}",
                 context.ServerUri.Host, context.ServerUri.Port, context.WorkerId, context.RequestId, context.MaxMessageLength);
+
+            if (!string.IsNullOrEmpty(context.ManagedModulePath))
+            {
+                argumentsBuilder.AppendFormat(" --managedModulePath {0}", context.ManagedModulePath);
+            }
+
             return argumentsBuilder.ToString();
         }
     }

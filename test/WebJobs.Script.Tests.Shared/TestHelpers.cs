@@ -253,11 +253,13 @@ namespace Microsoft.Azure.WebJobs.Script.Tests
         {
             var nodeWorkerDesc = GetTestWorkerDescription("node", ".js");
             var javaWorkerDesc = GetTestWorkerDescription("java", ".jar");
+            var powershellWorkerDesc = GetTestWorkerDescription("powershell", ".ps1");
 
             return new List<WorkerConfig>()
             {
                 new WorkerConfig() { Description = nodeWorkerDesc },
                 new WorkerConfig() { Description = javaWorkerDesc },
+                new WorkerConfig() { Description = powershellWorkerDesc }
             };
         }
 

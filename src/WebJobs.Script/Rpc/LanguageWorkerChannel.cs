@@ -26,6 +26,8 @@ namespace Microsoft.Azure.WebJobs.Script.Rpc
 {
     internal class LanguageWorkerChannel : ILanguageWorkerChannel
     {
+        private const string ManagedModulePathEnvironmentVariable = "ManagedModulePath";
+
         private readonly TimeSpan processStartTimeout = TimeSpan.FromSeconds(40);
         private readonly TimeSpan workerInitTimeout = TimeSpan.FromSeconds(30);
         private readonly string _rootScriptPath;
@@ -237,6 +239,7 @@ namespace Microsoft.Azure.WebJobs.Script.Rpc
                 Arguments = _workerConfig.Arguments,
                 WorkingDirectory = _rootScriptPath,
                 ServerUri = _serverUri,
+                ManagedModulePath = GetManagedModulePath()
             };
 
             _process = _processFactory.CreateWorkerProcess(workerContext);
@@ -486,6 +489,13 @@ namespace Microsoft.Azure.WebJobs.Script.Rpc
             _eventManager.Publish(new OutboundEvent(_workerId, msg));
         }
 
+        private string GetModulePath()
+        {
+            var language = Config.Description.Language;
+            // TODO: find actual module path
+            return string.Empty;
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (!_disposed)
@@ -531,6 +541,12 @@ namespace Microsoft.Azure.WebJobs.Script.Rpc
         public void Dispose()
         {
             Dispose(true);
+        }
+
+        private string GetManagedModulePath()
+        {
+            // TODO: Implement a Factory method and read from environment variable
+            return @"C:\Users\rankum\Desktop\ManagedModule";
         }
     }
 }

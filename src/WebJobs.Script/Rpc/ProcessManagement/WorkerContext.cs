@@ -19,6 +19,8 @@ namespace Microsoft.Azure.WebJobs.Script.Rpc
 
         public string WorkingDirectory { get; set; }
 
+        public string ManagedModulePath { get; set; }
+
         public int MaxMessageLength { get; set; }
     }
 }

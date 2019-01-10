@@ -16,6 +16,8 @@ namespace Microsoft.Azure.WebJobs.Script
 
         public string ScriptPath { get; set; }
 
+        public string ManagedModulePath { get; set; }
+
         public string LogPath { get; set; }
 
         public string TestDataPath { get; set; }
